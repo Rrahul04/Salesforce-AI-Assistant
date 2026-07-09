@@ -1,0 +1,82 @@
+@startuml
+title Salesforce AI Knowledge Assistant - System Architecture
+
+skinparam backgroundColor white
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultTextAlignment center
+skinparam ArrowColor #4A5568
+skinparam RectangleBorderColor #2D3748
+skinparam RectangleBackgroundColor #F8FAFC
+skinparam PackageBorderColor #4A5568
+
+actor User
+
+package "Frontend" {
+
+    component "Streamlit UI\n(app.py)" as UI
+
+    component "Chat Interface\n• User Input\n• Chat History\n• Suggested Questions\n• Retrieved Sources" as CHAT
+
+    UI --> CHAT
+}
+
+package "Backend" {
+
+    component "FastAPI Server\n(api.py)" as API
+
+    component "Redis Cache" as REDIS
+
+    component "RAG Engine\n(rag.py)" as RAG
+
+}
+
+package "Knowledge Layer" {
+
+    database "ChromaDB\nVector Store" as CHROMA
+
+    component "Gemini Embeddings" as EMBED
+
+    component "Gemini LLM" as LLM
+
+}
+
+package "Knowledge Base" {
+
+    folder "Salesforce Documents\nSalesforce_Notes.txt\nPDFs / Docs" as DOCS
+
+    component "Document Ingestion\n(ingest.py)" as INGEST
+
+}
+
+User --> UI : Ask Question
+
+CHAT --> API : POST /ask
+
+API --> REDIS : Check Cache
+
+REDIS --> API : Cache Hit?
+
+API --> RAG : Cache Miss
+
+RAG --> CHROMA : Similarity Search
+
+CHROMA --> RAG : Top-k Chunks
+
+RAG --> LLM : Prompt + Context
+
+LLM --> RAG : AI Response
+
+RAG --> API : Answer + Sources
+
+API --> REDIS : Cache Response
+
+API --> CHAT : JSON Response
+
+DOCS --> INGEST : Load Documents
+
+INGEST --> EMBED : Generate Embeddings
+
+EMBED --> CHROMA : Store Vectors
+
+@enduml
