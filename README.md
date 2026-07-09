@@ -239,4 +239,7 @@ This project is licensed under the MIT License.
 
 Software Engineer | Backend Development | AI Engineering | Cloud
 
+🔗 **LinkedIn:** [linkedin.com/in/rahulraina04](https://www.linkedin.com/in/rahulraina04/)  
+💻 **GitHub:** [github.com/Rrahul04](https://github.com/Rrahul04)
+
 ⭐ If you found this project useful, consider starring the repository.
