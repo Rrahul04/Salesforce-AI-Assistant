@@ -1,0 +1,114 @@
+APEX TRIGGERS
+
+Apex Triggers execute automatically when records are inserted, updated, deleted, or undeleted.
+
+Triggers are event-driven.
+
+Trigger Events
+
+Before Insert
+
+Before Update
+
+Before Delete
+
+After Insert
+
+After Update
+
+After Delete
+
+After Undelete
+
+Before triggers are generally used to validate or modify records before they are saved.
+
+After triggers are used when record IDs are required or when related records need to be updated.
+
+Example
+
+trigger AccountTrigger on Account(before insert){
+
+    for(Account acc : Trigger.new){
+
+        if(acc.Rating == null){
+
+            acc.Rating='Warm';
+
+        }
+
+    }
+
+}
+
+Trigger Context Variables
+
+Trigger.new
+
+Trigger.old
+
+Trigger.newMap
+
+Trigger.oldMap
+
+Trigger.isInsert
+
+Trigger.isUpdate
+
+Trigger.isDelete
+
+Trigger.isBefore
+
+Trigger.isAfter
+
+Bulkification
+
+A trigger must always support multiple records.
+
+Never assume only one record is processed.
+
+Wrong
+
+for(Account acc : Trigger.new){
+
+    Account a =
+    [SELECT Id FROM Contact WHERE AccountId=:acc.Id];
+
+}
+
+Correct
+
+Collect IDs first.
+
+Perform one SOQL query.
+
+Store results in Maps.
+
+Avoid
+
+SOQL inside loops
+
+DML inside loops
+
+Recursive trigger execution
+
+Best Practices
+
+One trigger per object
+
+Move logic into handler classes
+
+Bulkify code
+
+Avoid recursion
+
+Keep triggers lightweight
+
+Interview Questions
+
+Difference between before and after triggers.
+
+Why should SOQL never be written inside loops?
+
+How does Trigger.new differ from Trigger.old?
+
+What is trigger recursion?

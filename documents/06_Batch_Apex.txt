@@ -1,0 +1,117 @@
+BATCH APEX
+
+Batch Apex is used to process very large numbers of records asynchronously. It is designed for operations that exceed normal governor limits and allows records to be processed in smaller chunks called batches.
+
+Batch Apex is commonly used for:
+
+- Data cleanup
+- Mass record updates
+- Data migration
+- Scheduled maintenance
+- Processing millions of records
+
+A Batch Apex class implements the Database.Batchable interface.
+
+Three Required Methods
+
+1. start()
+
+The start() method identifies the records to process. It returns either a Database.QueryLocator or an Iterable collection.
+
+Example:
+
+public Database.QueryLocator start(Database.BatchableContext bc){
+
+    return Database.getQueryLocator(
+        'SELECT Id, Name FROM Account'
+    );
+
+}
+
+2. execute()
+
+The execute() method processes each batch of records.
+
+Example:
+
+public void execute(Database.BatchableContext bc, List<Account> scope){
+
+    for(Account acc : scope){
+
+        acc.Description='Updated';
+
+    }
+
+    update scope;
+
+}
+
+The default batch size is 200 records.
+
+3. finish()
+
+The finish() method runs after every batch has completed.
+
+Typical uses:
+
+- Send email notifications
+- Chain another batch job
+- Log processing statistics
+
+Example:
+
+public void finish(Database.BatchableContext bc){
+
+    System.debug('Batch Completed');
+
+}
+
+Database.Stateful
+
+Normally variables are reset after every batch execution.
+
+If state must be preserved between batches, implement Database.Stateful.
+
+Example:
+
+public class MyBatch implements Database.Batchable<SObject>, Database.Stateful
+
+Governor Limits
+
+Each batch executes as a separate transaction.
+
+Governor limits reset after every batch.
+
+Advantages
+
+Handles millions of records.
+
+Governor limits reset for each batch.
+
+Supports monitoring.
+
+Supports scheduling.
+
+Supports chaining.
+
+Best Practices
+
+Keep execute() lightweight.
+
+Avoid SOQL inside loops.
+
+Avoid DML inside loops.
+
+Choose an appropriate batch size.
+
+Use Database.Stateful only when necessary.
+
+Interview Questions
+
+What are the three methods of Batch Apex?
+
+Why are governor limits reset?
+
+When should Database.Stateful be used?
+
+Difference between Batch Apex and Queueable Apex.

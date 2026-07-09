@@ -1,0 +1,127 @@
+LIGHTNING WEB COMPONENTS (LWC)
+
+Lightning Web Components (LWC) is Salesforce's modern UI framework for building fast, reusable user interfaces.
+
+LWC is built using standard web technologies:
+
+HTML
+
+JavaScript
+
+CSS
+
+Unlike Aura Components, LWC follows modern web standards and provides better performance.
+
+Component Structure
+
+Every LWC contains:
+
+HTML file
+
+JavaScript file
+
+Meta XML file
+
+Optional CSS file
+
+Example
+
+accountCard.html
+
+accountCard.js
+
+accountCard.js-meta.xml
+
+Lifecycle Hooks
+
+constructor()
+
+connectedCallback()
+
+renderedCallback()
+
+disconnectedCallback()
+
+errorCallback()
+
+Decorators
+
+@api
+
+Public property.
+
+@track
+
+Tracks changes in objects.
+
+@wire
+
+Retrieves Salesforce data reactively.
+
+Example
+
+@wire(getRecord)
+
+record;
+
+Communication
+
+Parent to Child
+
+Public properties using @api.
+
+Child to Parent
+
+Custom Events.
+
+Advantages
+
+Faster than Aura.
+
+Modern JavaScript.
+
+Reusable components.
+
+Better browser performance.
+
+Improved security.
+
+Lightning Data Service
+
+Provides efficient data access without writing Apex.
+
+Use Cases
+
+Custom pages
+
+Dashboards
+
+Record pages
+
+Experience Cloud
+
+Reusable UI components
+
+Interview Questions
+
+Difference between Aura and LWC.
+
+Purpose of @wire.
+
+Purpose of @api.
+
+Purpose of connectedCallback().
+
+How do parent and child components communicate?
+
+Best Practices
+
+Reuse components.
+
+Avoid unnecessary Apex calls.
+
+Prefer Lightning Data Service when possible.
+
+Keep components modular.
+
+Separate business logic from UI.

@@ -1,0 +1,73 @@
+FUTURE METHODS
+
+Future Methods execute Apex code asynchronously in the background.
+
+Future Methods are useful for operations that do not need immediate execution.
+
+Syntax
+
+@future
+
+public static void processData(){
+
+}
+
+Characteristics
+
+Runs asynchronously.
+
+Does not return a value.
+
+Must be static.
+
+Cannot accept objects.
+
+Supports primitive data types only.
+
+Typical Uses
+
+HTTP callouts
+
+Long-running updates
+
+Background processing
+
+Sending emails
+
+Callouts
+
+To make HTTP callouts:
+
+@future(callout=true)
+
+Governor Limits
+
+Future methods execute with asynchronous governor limits.
+
+Advantages
+
+Improves user response time.
+
+Separates long-running work.
+
+Runs independently of user interaction.
+
+Limitations
+
+Cannot chain future methods.
+
+Cannot return values.
+
+Cannot accept complex objects.
+
+Queueable Apex overcomes many of these limitations.
+
+Interview Questions
+
+When should Future Methods be used?
+
+Why must they be static?
+
+Difference between Future Methods and Queueable Apex.
+
+Can Future Methods call another Future Method?

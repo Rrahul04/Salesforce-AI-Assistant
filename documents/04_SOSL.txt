@@ -1,0 +1,81 @@
+SOSL
+
+SOSL stands for Salesforce Object Search Language.
+
+Unlike SOQL, SOSL searches across multiple objects simultaneously.
+
+SOQL searches one object.
+
+SOSL searches many objects.
+
+Example
+
+FIND 'Rahul'
+IN ALL FIELDS
+RETURNING Account(Name),
+Contact(Name)
+
+Search Groups
+
+ALL FIELDS
+
+NAME FIELDS
+
+EMAIL FIELDS
+
+PHONE FIELDS
+
+RETURNING Clause
+
+Specifies which objects and fields should be returned.
+
+Example
+
+RETURNING Account(Name),
+Lead(Name)
+
+Use Cases
+
+Global search
+
+Searching multiple objects
+
+Searching unknown locations
+
+Searching keywords
+
+Difference
+
+SOQL
+
+One object
+
+Structured query
+
+Exact filtering
+
+SOSL
+
+Multiple objects
+
+Keyword search
+
+Text search
+
+Best Practices
+
+Use SOSL for search.
+
+Use SOQL for retrieval.
+
+Avoid unnecessary RETURNING objects.
+
+Interview Questions
+
+Difference between SOQL and SOSL.
+
+When should SOSL be used?
+
+Can SOSL search multiple objects?
+
+Can SOQL search multiple objects?

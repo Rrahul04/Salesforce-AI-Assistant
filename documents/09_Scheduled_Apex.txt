@@ -1,0 +1,99 @@
+SCHEDULED APEX
+
+Scheduled Apex allows Apex code to execute automatically at a specified date and time.
+
+It is commonly used for:
+
+Nightly processing
+
+Weekly reports
+
+Monthly cleanup
+
+Scheduled integrations
+
+A Scheduled Apex class implements the Schedulable interface.
+
+Example
+
+public class DailyJob implements Schedulable{
+
+    public void execute(SchedulableContext sc){
+
+        System.debug('Scheduled Job Running');
+
+    }
+
+}
+
+Scheduling
+
+System.schedule(
+
+'Daily Job',
+
+'0 0 2 * * ?',
+
+new DailyJob()
+
+);
+
+The second parameter is a CRON expression.
+
+Cron Expression
+
+Seconds
+
+Minutes
+
+Hours
+
+Day of Month
+
+Month
+
+Day of Week
+
+Example
+
+0 0 2 * * ?
+
+Means
+
+Run every day at 2:00 AM.
+
+Monitoring
+
+Scheduled jobs can be monitored from:
+
+Setup
+
+Apex Jobs
+
+Scheduled Jobs
+
+Use Cases
+
+Daily batch execution
+
+Data synchronization
+
+Automated reports
+
+Cleanup jobs
+
+Best Practices
+
+Schedule during low traffic.
+
+Avoid overlapping schedules.
+
+Use Batch Apex for large datasets.
+
+Interview Questions
+
+What interface does Scheduled Apex implement?
+
+What is a CRON expression?
+
+Difference between Scheduled Apex and Batch Apex.

@@ -1,0 +1,79 @@
+GOVERNOR LIMITS
+
+Salesforce is a multi-tenant platform.
+
+Governor limits ensure that one customer's code cannot consume excessive shared resources.
+
+Every Apex transaction is subject to governor limits.
+
+Important Limits
+
+Synchronous SOQL Queries
+
+100
+
+Asynchronous SOQL Queries
+
+200
+
+DML Statements
+
+150
+
+Maximum Heap Size
+
+6 MB synchronous
+
+12 MB asynchronous
+
+CPU Time
+
+10 seconds synchronous
+
+60 seconds asynchronous
+
+Callouts
+
+100
+
+Queueable Jobs
+
+50 can be added in one synchronous transaction.
+
+Batch Apex
+
+Maximum batch size 2000.
+
+Why Governor Limits Exist
+
+Fair resource sharing
+
+Platform stability
+
+Performance
+
+Security
+
+Avoiding Limits
+
+Bulkify code.
+
+Avoid SOQL inside loops.
+
+Avoid DML inside loops.
+
+Reuse collections.
+
+Process records in batches.
+
+Asynchronous processing for heavy work.
+
+Interview Questions
+
+Why do governor limits exist?
+
+Difference between synchronous and asynchronous limits.
+
+What happens when limits are exceeded?
+
+How do developers avoid governor limits?

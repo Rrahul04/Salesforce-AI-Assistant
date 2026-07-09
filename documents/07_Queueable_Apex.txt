@@ -1,0 +1,75 @@
+QUEUEABLE APEX
+
+Queueable Apex is an asynchronous Apex feature used for background processing. It is more flexible than Future Methods because it supports complex objects and job chaining.
+
+Queueable Apex implements the Queueable interface.
+
+Example
+
+public class AccountQueueJob implements Queueable{
+
+    public void execute(QueueableContext context){
+
+        System.debug('Queueable Job Running');
+
+    }
+
+}
+
+Enqueueing a Job
+
+System.enqueueJob(new AccountQueueJob());
+
+Advantages
+
+Supports complex data types.
+
+Supports chaining.
+
+Monitored through Apex Jobs.
+
+More flexible than Future Methods.
+
+Job Chaining
+
+One Queueable job can enqueue another Queueable job.
+
+Example
+
+System.enqueueJob(new SecondJob());
+
+Governor Limits
+
+Maximum 50 Queueable jobs can be added from one synchronous transaction.
+
+Each Queueable executes asynchronously.
+
+Use Cases
+
+Sending emails
+
+API integrations
+
+Long-running calculations
+
+Background updates
+
+Record processing
+
+Best Practices
+
+Keep jobs focused.
+
+Avoid unnecessary chaining.
+
+Handle exceptions properly.
+
+Monitor Apex Jobs.
+
+Interview Questions
+
+Difference between Future Methods and Queueable Apex.
+
+Can Queueable Apex chain another Queueable job?
+
+Why is Queueable preferred over Future Methods?

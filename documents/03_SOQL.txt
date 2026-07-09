@@ -1,0 +1,103 @@
+SOQL
+
+SOQL stands for Salesforce Object Query Language.
+
+It is used to retrieve records from Salesforce.
+
+SOQL resembles SQL but only retrieves Salesforce object data.
+
+Example
+
+SELECT Name
+FROM Account
+
+Selecting Multiple Fields
+
+SELECT Id,
+Name,
+Industry
+FROM Account
+
+Filtering
+
+SELECT Name
+FROM Account
+WHERE Industry='Technology'
+
+Ordering
+
+SELECT Name
+FROM Account
+ORDER BY CreatedDate DESC
+
+Limiting Results
+
+SELECT Name
+FROM Account
+LIMIT 10
+
+Relationship Queries
+
+Child to Parent
+
+SELECT Name,
+Account.Name
+FROM Contact
+
+Parent to Child
+
+SELECT Name,
+(
+SELECT LastName
+FROM Contacts
+)
+FROM Account
+
+Aggregate Functions
+
+COUNT()
+
+SUM()
+
+MAX()
+
+MIN()
+
+AVG()
+
+Example
+
+SELECT COUNT()
+FROM Account
+
+Governor Limits
+
+Synchronous Apex
+
+Maximum 100 SOQL queries.
+
+Asynchronous Apex
+
+Maximum 200 SOQL queries.
+
+Best Practices
+
+Retrieve only required fields.
+
+Use WHERE clauses.
+
+Avoid SELECT *.
+
+Avoid SOQL inside loops.
+
+Store query results in collections.
+
+Interview Questions
+
+Difference between SOQL and SQL.
+
+Difference between SOQL and SOSL.
+
+Governor limit on SOQL queries.
+
+Relationship queries.

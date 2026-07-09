@@ -1,0 +1,129 @@
+APEX
+
+Apex is Salesforce's proprietary programming language used to execute business logic on the Salesforce platform. It is a strongly typed, object-oriented language with syntax similar to Java. Apex runs entirely on Salesforce servers and allows developers to automate business processes, perform database operations, integrate with external systems, and implement complex business logic.
+
+Apex is executed whenever developers need functionality beyond declarative tools such as Flows or Validation Rules. Developers can write Apex classes, triggers, interfaces, enums, and test classes.
+
+Key Features
+
+- Strongly typed language
+- Object-oriented programming
+- Native database integration
+- Built-in exception handling
+- Supports asynchronous processing
+- Runs on Salesforce servers
+- Executes within governor limits
+
+Common Uses
+
+- Custom business logic
+- REST and SOAP integrations
+- Batch data processing
+- Scheduled jobs
+- Trigger logic
+- Complex validations
+- Email automation
+
+Apex supports classes similar to Java.
+
+Example:
+
+public class AccountService {
+    public static void updateAccount(Account acc){
+        update acc;
+    }
+}
+
+Variables in Apex are declared using data types.
+
+Example:
+
+String companyName = 'Salesforce';
+Integer totalAccounts = 100;
+Boolean isActive = true;
+
+Collections
+
+Apex supports:
+
+- Lists
+- Sets
+- Maps
+
+Example:
+
+List<Account> accounts = new List<Account>();
+
+Set<String> names = new Set<String>();
+
+Map<Id, Account> accountMap = new Map<Id, Account>();
+
+Database Operations (DML)
+
+Apex supports the following DML statements:
+
+Insert
+Update
+Delete
+Upsert
+Merge
+Undelete
+
+Example:
+
+insert account;
+
+update account;
+
+delete account;
+
+SOQL
+
+Salesforce data is queried using SOQL.
+
+Example:
+
+List<Account> accounts =
+[
+SELECT Id, Name
+FROM Account
+];
+
+Exception Handling
+
+Apex supports try-catch blocks.
+
+Example:
+
+try{
+    insert acc;
+}
+catch(Exception e){
+    System.debug(e.getMessage());
+}
+
+Best Practices
+
+Avoid SOQL inside loops.
+
+Avoid DML inside loops.
+
+Bulkify all code.
+
+Reuse helper classes.
+
+Write proper unit tests.
+
+Use collections whenever possible.
+
+Governor limits must always be considered while writing Apex.
+
+Interview Points
+
+Apex resembles Java but executes on Salesforce servers.
+
+Every Apex transaction is subject to governor limits.
+
+Apex supports synchronous and asynchronous execution.
+
+Apex integrates directly with Salesforce objects and metadata.

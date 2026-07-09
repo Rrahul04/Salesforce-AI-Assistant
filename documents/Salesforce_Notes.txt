@@ -1,0 +1,11 @@
+Salesforce is a cloud-based customer relationship management platform.
+
+Apex is a strongly typed, object-oriented programming language used to execute business logic on the Salesforce platform.
+
+Apex triggers execute before or after database events such as insert, update, delete, and undelete.
+
+Salesforce governor limits restrict resource usage in a single transaction to protect the multitenant platform.
+
+A synchronous Apex transaction can execute at most 100 SOQL queries.
+
+An asynchronous Apex transaction can execute at most 200 SOQL queries.
